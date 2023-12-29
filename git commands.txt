@@ -1,0 +1,122 @@
+* At a basic level git has 3 types of configuration:
+    1. System configuration - Which applies to all users
+    2. Global configuration - Which applies to all repositories of the current user
+    3. Local configuration - Which applies to the current repository of the current user
+
+* To define username at the global level:
+    $ git config --global user.name "Your Name"
+
+* To define email at the global level:
+    $ git config --global user.email youmail@mail.com
+
+* To define the default editor (For VS Code):
+    $ git config --global core.editor "code --wait"
+
+  If VS Code is in the PATH the above code will suffice. Else, you have to provide the full path. And by default the 
+  default editor is Vim.
+
+
+* To see the current configuration of git:
+    $ git config --global -e
+
+  This will open the configuration file on the default editor.
+
+* Define default line ending:
+    $ git config --global core.autocrlf input
+
+  This is for Linux.
+
+* To get help:
+    $ git <command> --help
+
+  To get a summury help:
+    $ git <command> -h
+
+* Initialize a directory:
+    $ git init
+
+* To see the status:
+    $ git status
+
+* To see a summury status:
+    $ git status -s
+
+  This will show result in three columns:
+
+    Staging area status | Working directory status | File name
+
+* Add file to staging:
+    $ git add <filename>
+
+  To add all the files to the staging area
+
+    $ git add . 
+  
+  To match a pattern and add to staging area
+    $ git add *.txt 
+
+* To see the staging area files:
+    $ git ls-files
+
+* To remove a file both from the working directory and staging area:
+    $ git rm <filename>
+
+* To rename a file, that is already in the staging area:
+    $ git mv <old_filename> <new_filename>
+
+  If the above command is not used to rename, then after renaming the file first you have to add the <old_filename> in 
+  the staging area as it has been deleted. 
+
+    $ git add <old_filename>
+
+  After that, the <new_filename> should be added to the staging area.
+    $ git add <new_filename>
+
+* To ignore files and directories to be tracked by git create a .gitignore file and put the ignored files and directories
+  names on it before commiting those files.
+
+* To remove a file from staging area:
+    $ git rm --cached <filename>
+
+* To see changes in a file that are in not added to staging area:
+    $ git diff
+
+* To see changes in a file that were added in the staging area:
+    $ git diff --staged
+
+* To set VS Code as the default diff tool:
+    $ git config --global diff.tool vscode
+
+    $ git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
+
+  After executing above commands check with the below command:
+    $ git config --global -e
+
+  If $LOCAL, $REMOTE placeholders are missing, then insert them manually.
+
+* To see all the commits:
+    $ git log
+
+  To see the commits in short:
+    $ git log --oneline
+
+  To see the commits in short about from the beginning to end:
+    $ git log --oneline --reverse
+
+* To put the staging state of a file in the previous state:
+    $ git restore --staged <filename>
+
+* To restore the working area file to earlier version:
+    $ git restore <filename>
+
+* To remove untracked files and directories:
+    $ git clean -fd
+
+* To restore a file after deleting it and committing:
+    $ git reset --hard HEAD~1
+
+* To see the version of git:
+    $ git --version
+
+
+
